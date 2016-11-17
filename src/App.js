@@ -3,9 +3,16 @@ import logo from './memoq-logo.png'
 import './App.css'
 import Input from './Input'
 
+const MODIFIERS = [
+  `Shift`,
+  `Control`,
+  `Alt`,
+  `Meta`
+]
+
 // Checks if key is a modifier key, like ctrl
 const isModifier = (key) => {
-  return key === `Shift` || key === 'Control'
+  return MODIFIERS.indexOf(key) !== -1
 }
 
 // Removes an item from an array

@@ -32,6 +32,7 @@ class App extends Component {
     this.handleKeypress = this.handleKeypress.bind(this)
     this.handleKeyRelease = this.handleKeyRelease.bind(this)
     this.state = {
+      question: `Control + Enter`,
       keysPressed: {
         modifiers: [],
         key: ``,
@@ -68,7 +69,7 @@ class App extends Component {
     let key = e.key
     let modifiers = this.state.keysPressed.modifiers
     if (isModifier(key)) modifiers = removeItem(key, modifiers)
-    // Key is release, so remove it from display
+    // Key is released, so remove it from display
     key = ``
     const keysString = keysToString(``, modifiers)
     this.setState({
@@ -93,7 +94,9 @@ class App extends Component {
           <code> Confirm a segment </code>
           in memoQ?
         </p>
-        <Input keysString={this.state.keysPressed.keysString} />
+        <Input
+          question={this.state.question}
+          keysString={this.state.keysPressed.keysString} />
       </div>
     )
   }

@@ -10,6 +10,13 @@ const MODIFIERS = [
   `Meta`
 ]
 
+const MEMOQ = [
+  {
+    q: `Comfirm segment`,
+    a: `Control + Enter`
+  }
+]
+
 // Checks if key is a modifier key, like ctrl
 const isModifier = (key) => {
   return MODIFIERS.indexOf(key) !== -1
@@ -39,7 +46,7 @@ class App extends Component {
     this.handleKeypress = this.handleKeypress.bind(this)
     this.handleKeyRelease = this.handleKeyRelease.bind(this)
     this.state = {
-      question: `Control + Enter`,
+      question: MEMOQ[0].a,
       keysPressed: {
         modifiers: [],
         key: ``,
@@ -98,7 +105,7 @@ class App extends Component {
         </div>
         <p className='App-intro'>
           Quick! What's the shortcut to
-          <code> Confirm a segment </code>
+          <code> {MEMOQ[0].q} </code>
           in memoQ?
         </p>
         <Input

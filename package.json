@@ -16,6 +16,7 @@
     "lint": "standard src/**.js",
     "lint:fix": "standard src/**.js --fix",
     "build": "react-scripts build",
+    "deploy": "yarn build && cp CNAME build/ && surge -p ./build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

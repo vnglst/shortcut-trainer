@@ -1,16 +1,23 @@
 import React, {Component} from 'react'
+import Paper from 'material-ui/Paper'
+import TextField from 'material-ui/TextField'
 import './Input.css'
+
+const showError = (question, answer) => (
+  question === answer ? false : 'Incorrect!'
+)
 
 class Input extends Component {
   render () {
     return (
-      <div className='Input'>
-        <input
-          type='text'
-          disabled='disabled'
-          className={(this.props.question === this.props.keysString) ? 'correctAnswer' : 'incorrectAnswer'}
-          value={this.props.keysString} />
-        <span>{(this.props.question === this.props.keysString) ? ' 👍' : ' 🤓'}</span>
+      <div className='row middle-xs center-xs Input'>
+        <Paper className='Question-paper' zDepth={1}>
+          <TextField
+            id='question'
+            errorText={showError(this.props.question, this.props.keysString)}
+            value={this.props.keysString} />
+          <div>{(this.props.question === this.props.keysString) ? ' 👍' : ' 🤓'}</div>
+        </Paper>
       </div>
     )
   }

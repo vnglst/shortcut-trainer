@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import logo from './memoq-logo.png'
 import './App.css'
-import Input from './Input'
+import QuestionCard from './QuestionCard'
 
 // Database of questions
 const MEMOQ = [
@@ -111,13 +111,8 @@ class App extends Component {
             Shortcut Trainer
           </h2>
         </div>
-        <p className='App-intro'>
-          Quick! What's the shortcut to
-          <code> {this.state.currentQ.q} </code>
-          in memoQ?
-        </p>
-        <Input
-          question={this.state.currentQ.a}
+        <QuestionCard
+          question={this.state.currentQ}
           answer={this.state.answer} />
       </div>
     )

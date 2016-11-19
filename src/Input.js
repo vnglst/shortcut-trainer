@@ -14,9 +14,9 @@ class Input extends Component {
         <Paper className='Question-paper' zDepth={1}>
           <TextField
             id='question'
-            errorText={showError(this.props.question, this.props.keysString)}
-            value={this.props.keysString} />
-          <div>{(this.props.question === this.props.keysString) ? ' 👍' : ' 🤓'}</div>
+            errorText={showError(this.props.question, this.props.answer)}
+            value={this.props.answer} />
+          <div>{(this.props.question === this.props.answer) ? ' 👍' : ' 🤓'}</div>
         </Paper>
       </div>
     )

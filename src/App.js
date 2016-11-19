@@ -3,22 +3,26 @@ import logo from './memoq-logo.png'
 import './App.css'
 import Input from './Input'
 
-const MODIFIERS = [
-  `Shift`,
-  `Control`,
-  `Alt`,
-  `Meta`
-]
-
+// Database of questions
 const MEMOQ = [
   {
-    q: `Comfirm segment`,
+    q: `Confirm segment`,
     a: `Control + Enter`
+  },
+  {
+    q: `Merge two segments`,
+    a: `Control + J`
   }
 ]
 
 // Checks if key is a modifier key, like ctrl
 const isModifier = (key) => {
+  const MODIFIERS = [
+    `Shift`,
+    `Control`,
+    `Alt`,
+    `Meta`
+  ]
   return MODIFIERS.indexOf(key) !== -1
 }
 
@@ -31,7 +35,7 @@ const removeItem = (item, array) => (
 )
 
 // Creates a string from keys pressed
-const keysToString = (key, modifiers) => {
+const inputToString = (key, modifiers) => {
   let keyStr = key
   if (isModifier(key)) keyStr = ``
   let modifierStr = modifiers.join(` + `)
@@ -46,11 +50,11 @@ class App extends Component {
     this.handleKeypress = this.handleKeypress.bind(this)
     this.handleKeyRelease = this.handleKeyRelease.bind(this)
     this.state = {
-      question: MEMOQ[0].a,
-      keysPressed: {
+      currentQ: MEMOQ[0],
+      answer: ``,
+      input: {
         modifiers: [],
-        key: ``,
-        keysString: ``
+        key: ``
       }}
   }
 
@@ -64,34 +68,38 @@ class App extends Component {
     window.removeEventListener('keyup', this.handleKeyRelease)
   }
 
+  componentWillUpdate (nextProps, nextState) {
+    console.log(nextState)
+  }
+
   handleKeypress (e) {
     e.preventDefault()
-    const modifiers = this.state.keysPressed.modifiers
-    const key = e.key
-    if (isModifier(key)) modifiers.push(key)
-    const keysString = keysToString(key, modifiers)
+    const input = this.state.input
+    const updatedModifiers = input.modifiers.slice(0) // clone array
+    if (isModifier(e.key)) updatedModifiers.push(e.key)
+    const answer = inputToString(e.key, updatedModifiers)
     this.setState({
-      keysPressed: {
-        modifiers,
-        key,
-        keysString
-      }})
+      answer,
+      input: {
+        modifiers: updatedModifiers,
+        key: e.key
+      }
+    })
   }
 
   handleKeyRelease (e) {
     e.preventDefault()
-    let key = e.key
-    let modifiers = this.state.keysPressed.modifiers
-    if (isModifier(key)) modifiers = removeItem(key, modifiers)
-    // Key is released, so remove it from display
-    key = ``
-    const keysString = keysToString(``, modifiers)
+    const input = this.state.input
+    let updatedModifiers = input.modifiers.slice(0) // clone array
+    if (isModifier(e.key)) updatedModifiers = removeItem(e.key, input.modifiers)
+    const answer = inputToString(``, updatedModifiers)
     this.setState({
-      keysPressed: {
-        modifiers,
-        key,
-        keysString
-      }})
+      answer,
+      input: {
+        modifiers: updatedModifiers,
+        key: `` // key is released, so remove
+      }
+    })
   }
 
   render () {
@@ -105,12 +113,12 @@ class App extends Component {
         </div>
         <p className='App-intro'>
           Quick! What's the shortcut to
-          <code> {MEMOQ[0].q} </code>
+          <code> {this.state.currentQ.q} </code>
           in memoQ?
         </p>
         <Input
-          question={this.state.question}
-          keysString={this.state.keysPressed.keysString} />
+          question={this.state.currentQ.a}
+          answer={this.state.answer} />
       </div>
     )
   }

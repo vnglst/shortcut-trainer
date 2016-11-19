@@ -11,7 +11,11 @@ const MEMOQ = [
   },
   {
     q: `Merge two segments`,
-    a: `Control + J`
+    a: `Control + t`
+  },
+  {
+    q: `Split a segment`,
+    a: `Control + j`
   }
 ]
 
@@ -43,19 +47,35 @@ const inputToString = (key, modifiers) => {
   return modifierStr + keyStr
 }
 
+const renderPrevQuestions = (prevQuestions) => {
+  if (prevQuestions.length > 0) {
+    return prevQuestions.map((q, index) => (
+      <QuestionCard
+        key={index}
+        question={q}
+        userAnswer={q.userAnswer} />
+    ))
+  } else return []
+}
+
 class App extends Component {
 
   constructor (props) {
     super(props)
     this.handleKeypress = this.handleKeypress.bind(this)
     this.handleKeyRelease = this.handleKeyRelease.bind(this)
+    const questions = MEMOQ.slice(0) // clone array
+    const currentQuestion = questions.pop()
     this.state = {
-      currentQ: MEMOQ[0],
-      answer: ``,
+      currentQuestion,
+      questions,
+      userAnswer: ``,
       input: {
         modifiers: [],
         key: ``
-      }}
+      },
+      prevQuestions: []
+    }
   }
 
   componentDidMount () {
@@ -69,17 +89,31 @@ class App extends Component {
   }
 
   componentWillUpdate (nextProps, nextState) {
-    console.log(nextState)
+    // console.log(nextState)
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    const currentQuestion = this.state.currentQuestion
+    if (currentQuestion.a === this.state.userAnswer) {
+      this.state.prevQuestions.push({
+        q: currentQuestion.q,
+        a: currentQuestion.a,
+        userAnswer: this.state.userAnswer
+      })
+      this.setState({
+        currentQuestion: this.state.questions.pop()
+      })
+    }
   }
 
   handleKeypress (e) {
     e.preventDefault()
     const input = this.state.input
-    const updatedModifiers = input.modifiers.slice(0) // clone array
+    const updatedModifiers = input.modifiers.slice(0)
     if (isModifier(e.key)) updatedModifiers.push(e.key)
-    const answer = inputToString(e.key, updatedModifiers)
+    const userAnswer = inputToString(e.key, updatedModifiers)
     this.setState({
-      answer,
+      userAnswer,
       input: {
         modifiers: updatedModifiers,
         key: e.key
@@ -90,11 +124,11 @@ class App extends Component {
   handleKeyRelease (e) {
     e.preventDefault()
     const input = this.state.input
-    let updatedModifiers = input.modifiers.slice(0) // clone array
+    let updatedModifiers = input.modifiers.slice(0)
     if (isModifier(e.key)) updatedModifiers = removeItem(e.key, input.modifiers)
-    const answer = inputToString(``, updatedModifiers)
+    const userAnswer = inputToString(``, updatedModifiers)
     this.setState({
-      answer,
+      userAnswer,
       input: {
         modifiers: updatedModifiers,
         key: `` // key is released, so remove
@@ -103,6 +137,7 @@ class App extends Component {
   }
 
   render () {
+    const prevQuestions = renderPrevQuestions(this.state.prevQuestions)
     return (
       <div className='App'>
         <div className='App-header'>
@@ -112,8 +147,9 @@ class App extends Component {
           </h2>
         </div>
         <QuestionCard
-          question={this.state.currentQ}
-          answer={this.state.answer} />
+          question={this.state.currentQuestion}
+          userAnswer={this.state.userAnswer} />
+        {prevQuestions}
       </div>
     )
   }

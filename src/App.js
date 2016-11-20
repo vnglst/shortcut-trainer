@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import logo from './memoq-logo.png'
 import './App.css'
 import QuestionCard from './QuestionCard'
+import PrevQuestions from './PrevQuestions'
 
 // Database of questions
 const MEMOQ = [
@@ -45,17 +46,6 @@ const inputToString = (key, modifiers) => {
   let modifierStr = modifiers.join(` + `)
   if (modifiers.length > 0) modifierStr += ` + `
   return modifierStr + keyStr
-}
-
-const renderPrevQuestions = (prevQuestions) => {
-  if (prevQuestions.length > 0) {
-    return prevQuestions.map((q, index) => (
-      <QuestionCard
-        key={index}
-        question={q}
-        userAnswer={q.userAnswer} />
-    ))
-  } else return []
 }
 
 class App extends Component {
@@ -137,7 +127,6 @@ class App extends Component {
   }
 
   render () {
-    const prevQuestions = renderPrevQuestions(this.state.prevQuestions)
     return (
       <div className='App'>
         <div className='App-header'>
@@ -149,7 +138,7 @@ class App extends Component {
         <QuestionCard
           question={this.state.currentQuestion}
           userAnswer={this.state.userAnswer} />
-        {prevQuestions}
+        <PrevQuestions prevQuestions={this.state.prevQuestions} />
       </div>
     )
   }

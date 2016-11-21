@@ -19,5 +19,8 @@
     "deploy": "yarn build && cp CNAME build/ && surge -p ./build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "standard": {
+    "globals": [ "it" ]
   }
 }

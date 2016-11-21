@@ -1,0 +1,22 @@
+[
+  {
+    "q": "Confirm segment",
+    "a": "Control + Enter"
+  },
+  {
+    "q": "Merge two segments",
+    "a": "Control + t"
+  },
+  {
+    "q": "Split a segment",
+    "a": "Control + j"
+  },
+  {
+    "q": "Add term",
+    "a": "Control + i"
+  },
+  {
+    "q": "Concordance search",
+    "a": "Control + k"
+  }
+]

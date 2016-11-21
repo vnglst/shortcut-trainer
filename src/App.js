@@ -6,30 +6,14 @@ import { connect } from 'react-redux'
 import { addQuestion, setCurrentQuestion } from './actions'
 
 // Database of questions
-const MEMOQ = [
-  {
-    q: `Confirm segment`,
-    a: `Control + Enter`
-  },
-  {
-    q: `Merge two segments`,
-    a: `Control + t`
-  },
-  {
-    q: `Split a segment`,
-    a: `Control + j`
-  },
-  {
-    q: `Add term`,
-    a: `Control + i`
-  }
-]
+import MEMOQ from './data/MEMOQ.json'
 
 class App extends Component {
 
   constructor (props) {
     super(props)
     this.dispatch = this.props.dispatch
+    // Load questions
     MEMOQ.forEach(el => {
       this.dispatch(addQuestion(el.q, el.a))
     })

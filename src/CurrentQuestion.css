@@ -1,0 +1,11 @@
+Current-Question-Wrapper {
+  width: auto
+}
+
+.No-Questions-Card {
+  height: auto;
+  width: 350px;
+  margin: 20px;
+  text-align: center;
+  display: inline-block;
+}

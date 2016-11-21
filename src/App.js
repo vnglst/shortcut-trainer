@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import logo from './memoq-logo.png'
 import './App.css'
-import QuestionCard from './QuestionCard'
-import PrevQuestions from './PrevQuestions'
+import CurrentQuestion from './CurrentQuestion'
+import CompletedQuestions from './CompletedQuestions'
 
 // Database of questions
 const MEMOQ = [
@@ -54,17 +54,15 @@ class App extends Component {
     super(props)
     this.handleKeypress = this.handleKeypress.bind(this)
     this.handleKeyRelease = this.handleKeyRelease.bind(this)
-    const questions = MEMOQ.slice(0) // clone array
-    const currentQuestion = questions.pop()
+    this.checkAnswer = this.checkAnswer.bind(this)
+    const questions = MEMOQ.slice(0)
     this.state = {
-      currentQuestion,
       questions,
       userAnswer: ``,
       input: {
         modifiers: [],
         key: ``
-      },
-      prevQuestions: []
+      }
     }
   }
 
@@ -83,17 +81,17 @@ class App extends Component {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const currentQuestion = this.state.currentQuestion
-    if (currentQuestion.a === this.state.userAnswer) {
-      this.state.prevQuestions.push({
-        q: currentQuestion.q,
-        a: currentQuestion.a,
-        userAnswer: this.state.userAnswer
-      })
-      this.setState({
-        currentQuestion: this.state.questions.pop()
-      })
-    }
+    // const currentQuestion = this.state.currentQuestion
+    // if (currentQuestion.a === this.state.userAnswer) {
+    //   this.state.prevQuestions.push({
+    //     q: currentQuestion.q,
+    //     a: currentQuestion.a,
+    //     userAnswer: this.state.userAnswer
+    //   })
+    //   this.setState({
+    //     currentQuestion: this.state.questions.pop()
+    //   })
+    // }
   }
 
   handleKeypress (e) {
@@ -109,6 +107,7 @@ class App extends Component {
         key: e.key
       }
     })
+    this.checkAnswer()
   }
 
   handleKeyRelease (e) {
@@ -126,6 +125,23 @@ class App extends Component {
     })
   }
 
+  checkAnswer () {
+    const questions = this.state.questions
+    const openQuestions = questions.filter((q) => (!q.done))
+    // Do nothing if all questions answered
+    if (!openQuestions) return
+    // Else, get current question
+    const currentQuestion = openQuestions[0]
+    const questionIndex = questions.findIndex((q) => (q.a === currentQuestion.a))
+    if (this.state.userAnswer === currentQuestion.a) {
+      let updatedQuestions = questions.slice(0)
+      updatedQuestions[questionIndex].done = true
+      this.setState({
+        questions: updatedQuestions
+      })
+    }
+  }
+
   render () {
     return (
       <div className='App'>
@@ -135,10 +151,11 @@ class App extends Component {
             Shortcut Trainer
           </h2>
         </div>
-        <QuestionCard
-          question={this.state.currentQuestion}
-          userAnswer={this.state.userAnswer} />
-        <PrevQuestions prevQuestions={this.state.prevQuestions} />
+        <CurrentQuestion
+          questions={this.state.questions}
+          userAnswer={this.state.userAnswer}
+          />
+        <CompletedQuestions questions={this.state.questions} />
       </div>
     )
   }

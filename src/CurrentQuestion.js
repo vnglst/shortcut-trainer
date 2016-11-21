@@ -6,7 +6,7 @@ import './CurrentQuestion.css'
 const CurrentQuestion = ({questions, userAnswer}) => {
   const openQuestions = questions.filter((q) => (!q.done))
   if (openQuestions.length > 0) {
-    const currentQuestion = openQuestions[0]
+    const currentQuestion = openQuestions.pop()
     return (
       <QuestionCard
         question={currentQuestion}

@@ -77,7 +77,7 @@ class App extends Component {
   }
 
   componentWillUpdate (nextProps, nextState) {
-    // console.log(nextState)
+    console.log(nextState)
   }
 
   handleKeypress (e) {
@@ -114,18 +114,28 @@ class App extends Component {
   checkAnswer () {
     const questions = this.state.questions
     const openQuestions = questions.filter((q) => (!q.done))
-    // Do nothing if all questions answered
-    if (!openQuestions) return
+
+    // Do nothing if all questions are answered
+    if (!openQuestions.length) return
+
     // Else, get current question
-    const currentQuestion = openQuestions[0]
+    const currentQuestion = openQuestions.pop()
+
+    // If question answered correctly
     const questionIndex = questions.findIndex((q) => (q.a === currentQuestion.a))
+    let updatedQuestions = questions.slice(0)
     if (this.state.userAnswer === currentQuestion.a) {
-      let updatedQuestions = questions.slice(0)
       updatedQuestions[questionIndex].done = true
-      this.setState({
-        questions: updatedQuestions
-      })
+      updatedQuestions[questionIndex].answeredCorrectly = true
+      updatedQuestions[questionIndex].userAnswer = this.state.userAnswer
+    } else if (!isModifier(this.state.input.key)) {
+      updatedQuestions[questionIndex].done = true
+      updatedQuestions[questionIndex].answeredCorrectly = false
+      updatedQuestions[questionIndex].userAnswer = this.state.userAnswer
     }
+    this.setState({
+      questions: updatedQuestions
+    })
   }
 
   render () {

@@ -5,7 +5,7 @@ const renderCompleted = (completedQuestions) => completedQuestions.map((q, i) =>
   <QuestionCard
     key={i}
     question={q}
-    userAnswer={q.a} />
+    userAnswer={q.userAnswer} />
   )
 )
 

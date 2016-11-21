@@ -9,7 +9,9 @@
   "dependencies": {
     "material-ui": "^0.16.4",
     "react": "^15.4.0",
-    "react-dom": "^15.4.0"
+    "react-dom": "^15.4.0",
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,6 +23,8 @@
     "eject": "react-scripts eject"
   },
   "standard": {
-    "globals": [ "it" ]
+    "globals": [
+      "it"
+    ]
   }
 }

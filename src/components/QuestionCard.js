@@ -9,19 +9,20 @@ const showError = (correctAnswer, userAnswer) => (
 
 class QuestionCard extends Component {
   render () {
+    const { currentQuestion, userAnswer } = this.props
     return (
       <div className='Question-Wrapper'>
         <Paper className='Question-Card' zDepth={1}>
           <p>
             Shortcut to
-            <code> {this.props.question.q} </code>
+            <code> {currentQuestion.q} </code>
             in memoQ?
           </p>
           <TextField
             id='user-answer'
-            errorText={showError(this.props.question.a, this.props.userAnswer)}
-            value={this.props.userAnswer} />
-          <div>{(this.props.question.a === this.props.userAnswer) ? ' 👍' : ' 🤓'}</div>
+            errorText={showError(currentQuestion.a, userAnswer)}
+            value={userAnswer} />
+          <div>{(currentQuestion.a === userAnswer) ? ' 👍' : ' 🤓'}</div>
         </Paper>
       </div>
     )

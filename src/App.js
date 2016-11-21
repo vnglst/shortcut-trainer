@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import logo from './memoq-logo.png'
 import './App.css'
 import VisibleInput from './containers/VisibleInput'
+import Header from './components/Header'
 import { connect } from 'react-redux'
 import { addKey, removeKey, addQuestion, setCurrentQuestion } from './actions'
 
@@ -57,12 +57,7 @@ class App extends Component {
   render () {
     return (
       <div className='App'>
-        <div className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h2>
-            Shortcut Trainer
-          </h2>
-        </div>
+        <Header />
         <VisibleInput />
       </div>
     )

@@ -80,20 +80,6 @@ class App extends Component {
     // console.log(nextState)
   }
 
-  componentDidUpdate (prevProps, prevState) {
-    // const currentQuestion = this.state.currentQuestion
-    // if (currentQuestion.a === this.state.userAnswer) {
-    //   this.state.prevQuestions.push({
-    //     q: currentQuestion.q,
-    //     a: currentQuestion.a,
-    //     userAnswer: this.state.userAnswer
-    //   })
-    //   this.setState({
-    //     currentQuestion: this.state.questions.pop()
-    //   })
-    // }
-  }
-
   handleKeypress (e) {
     e.preventDefault()
     const input = this.state.input

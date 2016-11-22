@@ -20,3 +20,11 @@ export const setCurrentQuestion = (id) => ({
   type: 'SET_CURRENT_QUESTION',
   id
 })
+
+export const answerQuestion = (id, answer) => (
+  {
+    type: 'ANSWER_QUESTION',
+    id,
+    answer
+  }
+)

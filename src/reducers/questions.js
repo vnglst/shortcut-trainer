@@ -7,6 +7,16 @@ const question = (state, action) => {
         a: action.a,
         completed: false
       }
+    case 'ANSWER_QUESTION':
+      if (state.id !== action.id) {
+        return state
+      }
+
+      return {
+        ...state,
+        completed: true,
+        userAnswer: action.answer
+      }
     case 'TOGGLE_QUESTION':
       if (state.id !== action.id) {
         return state
@@ -36,6 +46,11 @@ const questions = (state = { current: 0, list: [] }, action) => {
         ...state,
         current: action.id
       }
+    case 'ANSWER_QUESTION':
+      return {
+        ...state,
+        list: state.list.map(q => question(q, action))
+      }
     case 'NEXT_QUESTION':
       return {
         ...state,
@@ -49,7 +64,7 @@ const questions = (state = { current: 0, list: [] }, action) => {
     case 'TOGGLE_QUESTION':
       return {
         ...state,
-        list: state.list.map(t => question(t, action))
+        list: state.list.map(q => question(q, action))
       }
     default:
       return state

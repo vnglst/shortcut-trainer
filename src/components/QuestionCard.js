@@ -1,9 +1,18 @@
 import React, {Component} from 'react'
-// import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import ShowQuestion from './ShowQuestion'
 import './QuestionCard.css'
+
+const isModifier = (key) => {
+  const modifiers = [
+    'Shift',
+    'Control',
+    'Meta',
+    'Alt'
+  ]
+  return modifiers.indexOf(key) !== -1
+}
 
 const showError = (correctAnswer, userAnswer) => (
   userAnswer === correctAnswer ? false : 'Incorrect!'
@@ -35,11 +44,11 @@ class QuestionCard extends Component {
 
   handleKeyRelease (e) {
     e.preventDefault()
-    const { currentQuestion, userAnswer } = this.props
-    if (userAnswer === currentQuestion.a) {
-      this.props.answerQuestion(currentQuestion.id, userAnswer)
+    const { currentQuestion, userAnswer, removeKey, answerQuestion } = this.props
+    if (!isModifier(e.key)) {
+      answerQuestion(currentQuestion.id, userAnswer)
     }
-    this.props.removeKey(e.key)
+    removeKey(e.key)
   }
 
   render () {

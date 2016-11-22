@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import ShowQuestion from './ShowQuestion'
 import './QuestionCard.css'
-import { addKey, removeKey, answerQuestion } from '../actions'
 
 const showError = (correctAnswer, userAnswer) => (
   userAnswer === correctAnswer ? false : 'Incorrect!'
@@ -31,16 +30,16 @@ class QuestionCard extends Component {
 
   handleKeypress (e) {
     e.preventDefault()
-    this.dispatch(addKey(e.key))
+    this.props.addKey(e.key)
   }
 
   handleKeyRelease (e) {
     e.preventDefault()
     const { currentQuestion, userAnswer } = this.props
     if (userAnswer === currentQuestion.a) {
-      this.dispatch(answerQuestion(currentQuestion.id, userAnswer))
+      this.props.answerQuestion(currentQuestion.id, userAnswer)
     }
-    this.dispatch(removeKey(e.key))
+    this.props.removeKey(e.key)
   }
 
   render () {
@@ -64,4 +63,4 @@ class QuestionCard extends Component {
   }
 }
 
-export default connect()(ShowQuestion(QuestionCard))
+export default ShowQuestion(QuestionCard)

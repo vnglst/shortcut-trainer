@@ -21,6 +21,14 @@ export const setCurrentQuestion = (id) => ({
   id
 })
 
+export const nextQuestion = () => ({
+  type: 'NEXT_QUESTION'
+})
+
+export const previousQuestion = () => ({
+  type: 'PREVIOUS_QUESTION'
+})
+
 export const answerQuestion = (id, answer) => (
   {
     type: 'ANSWER_QUESTION',

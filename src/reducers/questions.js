@@ -54,12 +54,12 @@ const questions = (state = { current: 0, list: [] }, action) => {
     case 'NEXT_QUESTION':
       return {
         ...state,
-        current: Math.max(action.id++, state.list.length)
+        current: Math.min(++state.current, state.list.length - 1)
       }
     case 'PREVIOUS_QUESTION':
       return {
         ...state,
-        current: Math.min(action.id--, 0)
+        current: Math.max(--state.current.id, 0)
       }
     case 'TOGGLE_QUESTION':
       return {

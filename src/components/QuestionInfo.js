@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Paper from 'material-ui/Paper'
+import './QuestionInfo.css'
 
 class QuestionInfo extends Component {
 
@@ -11,7 +12,7 @@ class QuestionInfo extends Component {
           <p>Question: <code> {question.q} </code></p>
           <p>User answered: <code> {question.userAnswer} </code></p>
           <p>Correct answer: <code> {question.a} </code></p>
-          <div>{(question.a === question.userAnswer) ? ' 👍' : ' 🤓'}</div>
+          <div>{(question.a === question.userAnswer) ? 'Good work! 👍' : 'Keep on studying 🤓'}</div>
         </Paper>
       </div>
     )

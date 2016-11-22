@@ -3,7 +3,7 @@ import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import './QuestionCard.css'
 import { connect } from 'react-redux'
-import { addKey, removeKey } from '../actions'
+import { addKey, removeKey, answerQuestion, nextQuestion } from '../actions'
 
 const showError = (correctAnswer, userAnswer) => (
   userAnswer === correctAnswer ? false : 'Incorrect!'
@@ -35,6 +35,11 @@ class QuestionCard extends Component {
 
   handleKeyRelease (e) {
     e.preventDefault()
+    const { currentQuestion, userAnswer } = this.props
+    if (userAnswer === currentQuestion.a) {
+      this.dispatch(answerQuestion(currentQuestion.id, userAnswer))
+      this.dispatch(nextQuestion())
+    }
     this.dispatch(removeKey(e.key))
   }
 

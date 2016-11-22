@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
+import ShowQuestion from './ShowQuestion'
 import './QuestionCard.css'
-import { connect } from 'react-redux'
-import { addKey, removeKey, answerQuestion, nextQuestion } from '../actions'
+import { addKey, removeKey, answerQuestion } from '../actions'
 
 const showError = (correctAnswer, userAnswer) => (
   userAnswer === correctAnswer ? false : 'Incorrect!'
@@ -38,7 +39,6 @@ class QuestionCard extends Component {
     const { currentQuestion, userAnswer } = this.props
     if (userAnswer === currentQuestion.a) {
       this.dispatch(answerQuestion(currentQuestion.id, userAnswer))
-      this.dispatch(nextQuestion())
     }
     this.dispatch(removeKey(e.key))
   }
@@ -64,4 +64,4 @@ class QuestionCard extends Component {
   }
 }
 
-export default connect()(QuestionCard)
+export default connect()(ShowQuestion(QuestionCard))

@@ -17,7 +17,7 @@
   },
   {
     "q": "Join two segments",
-    "a": "Control + j",
+    "a": "Control + j"
   },
   {
     "q": "Split a segment in two",
@@ -33,10 +33,10 @@
   },
   {
     "q": "Concordance search in TM",
-    "a": "Control + k",
+    "a": "Control + k"
   },
   {
-    "q": "Confirm segment without TM update",
+    "q": "Confirm without TM update",
     "a": "Control + Shift + Enter"
-  },
+  }
 ]

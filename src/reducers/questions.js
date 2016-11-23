@@ -18,6 +18,16 @@ const question = (state, action) => {
         completed: true,
         userAnswer: action.answer
       }
+    case 'TRY_AGAIN':
+      if (!state.completed) {
+        return state
+      }
+
+      return {
+        ...state,
+        completed: false,
+        userAnswer: ''
+      }
     default:
       return state
   }
@@ -39,6 +49,11 @@ const questions = (state = { current: 0, list: [] }, action) => {
         current: action.id
       }
     case 'ANSWER_QUESTION':
+      return {
+        ...state,
+        list: state.list.map(q => question(q, action))
+      }
+    case 'TRY_AGAIN':
       return {
         ...state,
         list: state.list.map(q => question(q, action))

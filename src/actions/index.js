@@ -27,3 +27,9 @@ export const answerQuestion = (id, answer) => (
     answer
   }
 )
+
+export const tryAgain = () => (
+  {
+    type: 'TRY_AGAIN'
+  }
+)

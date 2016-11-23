@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import TextField from 'material-ui/TextField'
 import ShowQuestion from './ShowQuestion'
-import './QuestionCard.css'
+import './Question.css'
 
 const isModifier = (key) => {
   const modifiers = [
@@ -17,7 +17,7 @@ const showError = (correctAnswer, userAnswer) => (
   userAnswer === correctAnswer ? false : 'Incorrect!'
 )
 
-class QuestionCard extends Component {
+class Question extends Component {
 
   constructor (props) {
     super(props)
@@ -69,4 +69,4 @@ class QuestionCard extends Component {
   }
 }
 
-export default ShowQuestion(QuestionCard)
+export default ShowQuestion(Question)

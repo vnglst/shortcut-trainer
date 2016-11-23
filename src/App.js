@@ -7,16 +7,15 @@ import Input from './components/question/Input'
 import Stats from './components/stats/Stats'
 import { connect } from 'react-redux'
 import { addQuestion } from './actions'
-// Database of questions
-import MEMOQ from './data/MEMOQ.json'
 
 class App extends Component {
 
   constructor (props) {
     super(props)
     this.dispatch = this.props.dispatch
+    const questions = this.props.questions
     // Load questions
-    MEMOQ.forEach(el => {
+    questions.forEach(el => {
       this.dispatch(addQuestion(el.q, el.a))
     })
   }

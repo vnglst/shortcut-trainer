@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import QuestionCard from '../components/question/QuestionCard'
+import Question from '../components/question/Question'
 import { addKey, removeKey, answerQuestion } from '../actions'
 
 const mapStateToProps = (state) => {
@@ -19,6 +19,6 @@ const mapDispatchToProps = ({
 const VisibleInput = connect(
   mapStateToProps,
   mapDispatchToProps
-)(QuestionCard)
+)(Question)
 
 export default VisibleInput

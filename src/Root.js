@@ -4,6 +4,8 @@ import App from './App'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
+// Database of questions
+import MEMOQ from './data/MEMOQ.json'
 
 const logger = store => next => action => {
   // console.log('dispatching', action)
@@ -19,7 +21,7 @@ const store = createStore(reducer,
 const Root = () => (
   <MuiThemeProvider>
     <Provider store={store}>
-      <App />
+      <App questions={MEMOQ} />
     </Provider>
   </MuiThemeProvider>
 )

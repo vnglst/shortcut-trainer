@@ -4,7 +4,8 @@
 
 .Content {
   display: flex;
-  flex-pack: space-between;
+  flex-direction: row;
+  justify-content: center;
 }
 
 

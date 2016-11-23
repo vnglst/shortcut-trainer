@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import './App.css'
+import Header from './components/header/Header'
+import QuestionCard from './components/question/QuestionCard'
 import VisibleInput from './containers/VisibleInput'
 import VisibleHistory from './containers/VisibleHistory'
-import Header from './components/header/Header'
-import QuestionWrapper from './components/question/QuestionWrapper'
+import StatsCard from './components/stats/StatsCard'
 import VisibleStats from './containers/VisibleStats'
 import { connect } from 'react-redux'
 import { addQuestion } from './actions'
@@ -25,11 +26,13 @@ class App extends Component {
       <div className='App'>
         <Header />
         <div className='Content'>
-          <QuestionWrapper>
+          <QuestionCard>
             <VisibleInput />
             <VisibleHistory />
-          </QuestionWrapper>
-          <VisibleStats />
+          </QuestionCard>
+          <StatsCard>
+            <VisibleStats />
+          </StatsCard>
         </div>
       </div>
     )

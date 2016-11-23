@@ -40,7 +40,7 @@ class Question extends Component {
     const { currentQuestion, userAnswer } = this.props
     const questionString = "What's the keyboard shortcut for:"
     return (
-      <div className='Question-Wrapper'>
+      <div className='Question'>
         <p>{questionString}</p>
         <TextField
           id='user-answer'

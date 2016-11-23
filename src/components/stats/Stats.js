@@ -13,7 +13,7 @@ const Stats = ({ completed, total, correct, mistakes, tryAgain }) => (
     </List>
     <Divider />
     <CardActions>
-      <FlatButton label='Start over' primary onClick={tryAgain} />
+      <FlatButton label='Try again' primary onClick={tryAgain} />
     </CardActions>
   </div>
 )

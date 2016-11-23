@@ -2,12 +2,12 @@ import React from 'react'
 import {Card, CardText} from 'material-ui/Card'
 import './QuestionCard.css'
 
-const Input = ({ children }) => (
-  <Card className='Question-Wrapper' >
+const QuestionCard = ({ children }) => (
+  <Card className='Question-Card'>
     <CardText>
       { children }
     </CardText>
   </Card>
 )
 
-export default Input
+export default QuestionCard

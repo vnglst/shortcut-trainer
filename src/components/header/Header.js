@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from './memoq-logo.png'
+import logo from '../../images/memoq-logo.png'
 import './Header.css'
 
 const Header = () => (

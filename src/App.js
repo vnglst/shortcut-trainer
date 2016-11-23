@@ -3,8 +3,8 @@ import './App.css'
 import VisibleInput from './containers/VisibleInput'
 import VisibleHistory from './containers/VisibleHistory'
 import Header from './components/header/Header'
-import Input from './components/question/Input'
-import Stats from './components/stats/Stats'
+import QuestionWrapper from './components/question/QuestionWrapper'
+import VisibleStats from './containers/VisibleStats'
 import { connect } from 'react-redux'
 import { addQuestion } from './actions'
 
@@ -25,13 +25,11 @@ class App extends Component {
       <div className='App'>
         <Header />
         <div className='Content'>
-          <Input>
+          <QuestionWrapper>
             <VisibleInput />
             <VisibleHistory />
-          </Input>
-          <Stats>
-            <h1>Stats</h1>
-          </Stats>
+          </QuestionWrapper>
+          <VisibleStats />
         </div>
       </div>
     )

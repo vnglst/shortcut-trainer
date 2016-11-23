@@ -1,6 +1,6 @@
 import React from 'react'
 import {Card, CardText} from 'material-ui/Card'
-import './Input.css'
+import './QuestionWrapper.css'
 
 const Input = ({ children }) => (
   <Card className='Input' >

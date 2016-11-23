@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import QuestionInfo from './QuestionInfo'
 import {List} from 'material-ui/List'
- 
+
 class QuestionHistory extends Component {
   render () {
     const { questions } = this.props

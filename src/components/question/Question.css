@@ -1,11 +1,3 @@
 Question-Wrapper {
   width: auto
 }
-
-.Question-Card {
-  height: auto;
-  width: 350px;
-  margin: 20px;
-  text-align: center;
-  display: inline-block;
-}

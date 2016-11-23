@@ -6,7 +6,6 @@ import {red500, greenA200} from 'material-ui/styles/colors'
 import './QuestionInfo.css'
 
 class QuestionInfo extends Component {
-
   render () {
     const { question } = this.props
     const correctAnswer = question.a === question.userAnswer

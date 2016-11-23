@@ -9,6 +9,10 @@ const input = (state = [], action) => {
       return state.filter(k =>
         k !== action.key
       )
+    case 'TRY_AGAIN':
+      return []
+    case 'RESET':
+      return []
 
     default:
       return state

@@ -8,6 +8,10 @@ export const removeKey = (key) => ({
   key
 })
 
+export const reset = (key) => ({
+  type: 'RESET'
+})
+
 let nextQuestionId = 0
 export const addQuestion = (question) => ({
   type: 'ADD_QUESTION',

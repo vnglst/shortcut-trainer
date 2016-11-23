@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Question from '../components/question/Question'
-import { addKey, removeKey, answerQuestion } from '../actions'
+import { addKey, removeKey, answerQuestion, reset } from '../actions'
 
 const mapStateToProps = (state) => {
   const openQuestions = state.questions.list.filter(q => !q.completed)
@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = ({
   addKey,
   removeKey,
-  answerQuestion
+  answerQuestion,
+  reset
 })
 
 const VisibleInput = connect(

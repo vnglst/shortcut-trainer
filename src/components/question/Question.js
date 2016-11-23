@@ -37,7 +37,7 @@ class Question extends Component {
   }
 
   render () {
-    const { currentQuestion, userAnswer } = this.props
+    const { currentQuestion, userAnswer, reset } = this.props
     const questionString = "What's the keyboard shortcut for:"
     return (
       <div className='Question'>
@@ -47,7 +47,8 @@ class Question extends Component {
           floatingLabelText={currentQuestion.q}
           value={userAnswer}
           onKeyDown={this.handleKeypress}
-          onKeyUp={this.handleKeyRelease} />
+          onKeyUp={this.handleKeyRelease} 
+          onBlur={reset} />
       </div>
     )
   }

@@ -13,10 +13,6 @@ const isModifier = (key) => {
   return modifiers.indexOf(key) !== -1
 }
 
-const showError = (correctAnswer, userAnswer) => (
-  userAnswer === correctAnswer ? false : 'Incorrect!'
-)
-
 class Question extends Component {
 
   constructor (props) {
@@ -24,16 +20,6 @@ class Question extends Component {
     this.dispatch = this.props.dispatch
     this.handleKeypress = this.handleKeypress.bind(this)
     this.handleKeyRelease = this.handleKeyRelease.bind(this)
-  }
-
-  componentDidMount () {
-    window.addEventListener('keydown', this.handleKeypress)
-    window.addEventListener('keyup', this.handleKeyRelease)
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('keydown', this.handleKeypress)
-    window.removeEventListener('keyup', this.handleKeyRelease)
   }
 
   handleKeypress (e) {
@@ -52,18 +38,16 @@ class Question extends Component {
 
   render () {
     const { currentQuestion, userAnswer } = this.props
+    const questionString = "What's the keyboard shortcut for"
     return (
       <div className='Question-Wrapper'>
-        <p>
-          Shortcut to
-          <code> {currentQuestion.q} </code>
-          in memoQ?
-        </p>
+        <p>{questionString}</p>
         <TextField
           id='user-answer'
-          errorText={showError(currentQuestion.a, userAnswer)}
-          value={userAnswer} />
-        <div>{(currentQuestion.a === userAnswer) ? ' 👍' : ' 🤓'}</div>
+          floatingLabelText={currentQuestion.q}
+          value={userAnswer}
+          onKeyDown={this.handleKeypress}
+          onKeyUp={this.handleKeyRelease} />
       </div>
     )
   }

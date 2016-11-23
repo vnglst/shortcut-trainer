@@ -6,6 +6,10 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 // Database of questions
 import MEMOQ from './data/MEMOQ.json'
+// Required to fix warning for Material-UI elements
+// See: https://github.com/callemall/material-ui/issues/4670
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
 
 const logger = store => next => action => {
   // console.log('dispatching', action)

@@ -6,7 +6,7 @@ const mapStateToProps = (state) => ({
   open: state.questions.list.filter(q => !q.completed).length,
   completed: state.questions.list.filter(q => q.completed).length,
   correct: state.questions.list.filter(q => q.a === q.userAnswer).length,
-  mistakes: state.questions.list.filter(q => q.a !== q.userAnswer).length
+  mistakes: state.questions.list.filter(q => q.completed && q.a !== q.userAnswer).length
 })
 
 const VisibleStats = connect(

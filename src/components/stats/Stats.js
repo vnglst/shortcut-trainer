@@ -1,12 +1,11 @@
 import React from 'react'
 import {List, ListItem} from 'material-ui/List'
-// import ThumbUp from 'material-ui/svg-icons/action/thumb-up'
-// import ThumbDown from 'material-ui/svg-icons/action/thumb-down'
-// import {red500, greenA200} from 'material-ui/styles/colors'
 
-const Stats = ({ completed }) => (
-  <List>
-    <ListItem primaryText={'Completed: ' + completed} />
+const Stats = ({ completed, total, correct, mistakes }) => (
+  <List className='Stats-List'>
+    <ListItem disabled primaryText={`Completed: ${completed}/${total}`} />
+    <ListItem disabled primaryText={`Correct: ${correct}/${completed}`} />
+    <ListItem disabled primaryText={`Mistakes: ${mistakes}/${completed}`} />
   </List>
 )
 

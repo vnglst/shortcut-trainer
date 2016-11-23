@@ -4,23 +4,39 @@
     "a": "Control + Enter"
   },
   {
-    "q": "Merge two segments",
-    "a": "Control + t",
-    "userAnswer": "Control + t",
-    "completed": true
+    "q": "Insert 1st hit from hit list",
+    "a": "Control + 1"
   },
   {
-    "q": "Split a segment",
-    "a": "Control + j"
+    "q": "Edit source",
+    "a": "F2"
   },
   {
-    "q": "Add term",
-    "a": "Control + i"
+    "q": "Lock/unlock segment",
+    "a": "Control + Shift + L"
   },
   {
-    "q": "Concordance search",
+    "q": "Join two segments",
+    "a": "Control + j",
+  },
+  {
+    "q": "Split a segment in two",
+    "a": "Control + t"
+  },
+  {
+    "q": "Add term to TermBase",
+    "a": "Control + e"
+  },
+  {
+    "q": "Lookup term in TermBase",
+    "a": "Control + p"
+  },
+  {
+    "q": "Concordance search in TM",
     "a": "Control + k",
-    "userAnswer": "Alt + t",
-    "completed": true
-  }
+  },
+  {
+    "q": "Confirm segment without TM update",
+    "a": "Control + Shift + Enter"
+  },
 ]

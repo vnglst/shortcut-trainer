@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import QuestionCard from '../components/QuestionCard'
+import QuestionCard from '../components/question/QuestionCard'
 import { addKey, removeKey, answerQuestion } from '../actions'
 
 const mapStateToProps = (state) => {

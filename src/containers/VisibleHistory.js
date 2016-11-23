@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import QuestionHistory from '../components/QuestionHistory'
+import QuestionHistory from '../components/question/QuestionHistory'
 
 const mapStateToProps = (state) => ({
   questions: state.questions.list.filter(q => q.completed)

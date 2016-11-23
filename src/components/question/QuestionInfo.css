@@ -1,3 +1,11 @@
-Info-Wrapper {
-  width: auto
+.wrong {
+  text-decoration: line-through;
+  color: #f44336;
 }
+
+.right {
+  text-decoration: none;
+  color: #69f0ae;
+}
+
+

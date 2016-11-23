@@ -5,7 +5,9 @@
   },
   {
     "q": "Merge two segments",
-    "a": "Control + t"
+    "a": "Control + t",
+    "userAnswer": "Control + t",
+    "completed": true
   },
   {
     "q": "Split a segment",
@@ -17,6 +19,8 @@
   },
   {
     "q": "Concordance search",
-    "a": "Control + k"
+    "a": "Control + k",
+    "userAnswer": "Alt + t",
+    "completed": true
   }
 ]

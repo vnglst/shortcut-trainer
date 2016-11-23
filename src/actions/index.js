@@ -9,11 +9,10 @@ export const removeKey = (key) => ({
 })
 
 let nextQuestionId = 0
-export const addQuestion = (q, a) => ({
+export const addQuestion = (question) => ({
   type: 'ADD_QUESTION',
   id: nextQuestionId++,
-  q,
-  a
+  question
 })
 
 export const setCurrentQuestion = (id) => ({

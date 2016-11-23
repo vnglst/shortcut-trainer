@@ -2,10 +2,11 @@ const question = (state, action) => {
   switch (action.type) {
     case 'ADD_QUESTION':
       return {
-        id: action.id,
-        q: action.q,
-        a: action.a,
-        completed: false
+        id: action.question.id || action.id,
+        q: action.question.q,
+        a: action.question.a,
+        completed: action.question.completed || false,
+        userAnswer: action.question.userAnswer || ''
       }
     case 'ANSWER_QUESTION':
       if (state.id !== action.id) {

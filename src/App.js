@@ -15,8 +15,8 @@ class App extends Component {
     this.dispatch = this.props.dispatch
     const questions = this.props.questions
     // Load questions
-    questions.forEach(el => {
-      this.dispatch(addQuestion(el.q, el.a))
+    questions.forEach(question => {
+      this.dispatch(addQuestion(question))
     })
   }
 

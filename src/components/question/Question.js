@@ -38,7 +38,7 @@ class Question extends Component {
 
   render () {
     const { currentQuestion, userAnswer } = this.props
-    const questionString = "What's the keyboard shortcut for"
+    const questionString = "What's the keyboard shortcut for:"
     return (
       <div className='Question-Wrapper'>
         <p>{questionString}</p>

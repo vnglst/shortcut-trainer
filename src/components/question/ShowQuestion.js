@@ -7,7 +7,7 @@ const ShowQuestion = (WrappedComponent) => {
   return class ShowQuestion extends Component {
     render () {
       return (!this.props.currentQuestion)
-        ? <div className='No-Questions'>No more questions</div>
+        ? <h1>No more questions</h1>
         : <WrappedComponent {...this.props} />
     }
   }

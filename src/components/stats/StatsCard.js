@@ -8,7 +8,6 @@ const StatsCard = ({ children }) => (
       <h1>Stats</h1>
     </CardText>
     { children }
-
   </Card>
 )
 

@@ -3,6 +3,7 @@ import {CardActions} from 'material-ui/Card'
 import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
+import './Stats.css'
 
 const Stats = ({ completed, total, correct, mistakes, tryAgain }) => (
   <div>

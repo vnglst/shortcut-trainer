@@ -6,6 +6,7 @@ import VisibleInput from './containers/VisibleInput'
 import VisibleHistory from './containers/VisibleHistory'
 import StatsCard from './components/stats/StatsCard'
 import VisibleStats from './containers/VisibleStats'
+import Footer from './components/footer/Footer'
 import { connect } from 'react-redux'
 import { addQuestion } from './actions'
 
@@ -34,6 +35,7 @@ class App extends Component {
             <VisibleStats />
           </StatsCard>
         </div>
+        <Footer />
       </div>
     )
   }

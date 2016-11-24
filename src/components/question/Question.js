@@ -44,10 +44,11 @@ class Question extends Component {
         <p>{questionString}</p>
         <TextField
           id='user-answer'
+          autoFocus
           floatingLabelText={currentQuestion.q}
           value={userAnswer}
           onKeyDown={this.handleKeypress}
-          onKeyUp={this.handleKeyRelease} 
+          onKeyUp={this.handleKeyRelease}
           onBlur={reset} />
       </div>
     )

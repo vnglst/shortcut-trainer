@@ -2,6 +2,7 @@ import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import App from './App'
 import { createStore, applyMiddleware } from 'redux'
+import { Router, Route, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 // Database of questions
@@ -12,9 +13,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 const logger = store => next => action => {
-  // console.log('dispatching', action)
+  console.log('dispatching', action)
   let result = next(action)
-  // console.log('next state', store.getState())
+  console.log('next state', store.getState())
   return result
 }
 
@@ -25,7 +26,10 @@ const store = createStore(reducer,
 const Root = () => (
   <MuiThemeProvider>
     <Provider store={store}>
-      <App questions={MEMOQ} />
+      <Router history={browserHistory}>
+        <Route path='/' component={() => (<App questions={MEMOQ} />)} />
+        <Route path='/memoq' component={() => (<App questions={MEMOQ} />)} />
+      </Router>
     </Provider>
   </MuiThemeProvider>
 )

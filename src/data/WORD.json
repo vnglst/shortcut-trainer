@@ -1,0 +1,42 @@
+[
+  {
+    "q": "Select all text",
+    "a": "Control + a"
+  },
+  {
+    "q": "Select left word",
+    "a": "Control + Shift + ArrowLeft"
+  },
+  {
+    "q": "Selected text bold",
+    "a": "Control + b"
+  },
+  {
+    "q": "Selected text italic",
+    "a": "Control + i"
+  },
+  {
+    "q": "Print document",
+    "a": "Control + p"
+  },
+  {
+    "q": "Copy selected text",
+    "a": "Control + c"
+  },
+  {
+    "q": "Paste selected text",
+    "a": "Control + v"
+  },
+  {
+    "q": "Undo last action",
+    "a": "Control + z"
+  },
+  {
+    "q": "Open font dialog",
+    "a": "Control + Shift + F"
+  },
+  {
+    "q": "Open word count",
+    "a": "Control + Shift + G"
+  }
+]

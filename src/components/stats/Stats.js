@@ -1,20 +1,22 @@
 import React from 'react'
 import {CardActions} from 'material-ui/Card'
 import {List, ListItem} from 'material-ui/List'
-import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
+import LinearProgress from 'material-ui/LinearProgress'
 import './Stats.css'
 
 const Stats = ({ completed, total, correct, mistakes, tryAgain }) => (
   <div>
-    <List className='Stats-List'>
+    <List>
       <ListItem disabled primaryText={`Completed: ${completed}/${total}`} />
       <ListItem disabled primaryText={`Correct: ${correct}/${completed}`} />
       <ListItem disabled primaryText={`Mistakes: ${mistakes}/${completed}`} />
     </List>
-    <Divider />
+    <div className='Stats-Progress'>
+      <LinearProgress mode='determinate' value={(completed / total * 100).toFixed(2)} />
+    </div>
     <CardActions>
-      <FlatButton label='Try again' primary onClick={tryAgain} />
+      <FlatButton label='Try again' secondary onClick={tryAgain} disabled={completed !== total} />
     </CardActions>
   </div>
 )

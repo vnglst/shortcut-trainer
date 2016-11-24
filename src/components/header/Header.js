@@ -1,13 +1,12 @@
 import React from 'react'
-import logo from '../../images/memoq-logo.png'
 import './Header.css'
 
-const Header = () => (
+const Header = ({logo}) => (
   <div className='App-header'>
     <h2>
       Shortcut Trainer
     </h2>
-    <img src={logo} className='App-logo' alt='logo' />
+    <img src={logo} className='Logo' alt='logo' />
   </div>
 )
 

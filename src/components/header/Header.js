@@ -3,9 +3,11 @@ import './Header.css'
 
 const Header = ({logo}) => (
   <header>
-    <h1>
-      Shortcut Trainer
-    </h1>
+    <a href='/'>
+      <h1>
+        Shortcut Trainer
+      </h1>
+    </a>
     <img src={logo} className='Logo' alt='logo' />
   </header>
 )

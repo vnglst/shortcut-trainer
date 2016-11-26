@@ -15,7 +15,7 @@ header {
 }
 
 header h1 {
-  font-size: 26px;
+  font-size: 24px;
 }
 
 header a {
@@ -32,18 +32,18 @@ header a {
 }
 
 .App-Questions {
-  margin: 20px 10px;
-  width: 500px;
+  margin: 20px 5px;
+  width: 700px;
 }
 
 .App-Stats {
-  margin: 20px 10px;
-  width: 300px;
+  margin: 20px 5px;
+  width: 400px;
   text-align: center;
 }
 
 footer {
-  margin: 20px 10px;
+  margin: 20px 5px;
   display: block;
   text-align: center;
 }

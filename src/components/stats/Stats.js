@@ -13,7 +13,7 @@ const Stats = ({ completed, total, correct, mistakes, tryAgain }) => (
       <ListItem disabled primaryText={`Mistakes: ${mistakes}/${completed}`} />
     </List>
     <div className='Stats-Progress'>
-      <LinearProgress mode='determinate' value={(completed / total * 100).toFixed(2)} />
+      <LinearProgress mode='determinate' value={(completed / total * 100)} />
     </div>
     <CardActions>
       <FlatButton label='Try again' secondary onClick={tryAgain} disabled={completed !== total} />

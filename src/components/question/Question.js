@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import TextField from 'material-ui/TextField'
 import ShowQuestion from './ShowQuestion'
-import './Question.css'
 
 const isModifier = (key) => {
   const modifiers = [

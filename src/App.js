@@ -15,16 +15,20 @@ const App = ({dispatch, questions, logo}) => {
     dispatch(addQuestion(question))
   })
   return (
-    <div className='App'>
+    <div id='App'>
       <Header logo={logo} />
-      <div className='Content'>
-        <QuestionCard>
-          <VisibleInput />
-          <VisibleHistory />
-        </QuestionCard>
-        <StatsCard>
-          <VisibleStats />
-        </StatsCard>
+      <div id='Main'>
+        <div className='App-Questions'>
+          <QuestionCard>
+            <VisibleInput />
+            <VisibleHistory />
+          </QuestionCard>
+        </div>
+        <div className='App-Stats'>
+          <StatsCard>
+            <VisibleStats />
+          </StatsCard>
+        </div>
       </div>
       <Footer />
     </div>

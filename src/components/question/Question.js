@@ -12,6 +12,21 @@ const isModifier = (key) => {
   return modifiers.indexOf(key) !== -1
 }
 
+const isMobile = () => {
+  if (navigator.userAgent.match(/Android/i) ||
+    navigator.userAgent.match(/webOS/i) ||
+    navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/iPad/i) ||
+    navigator.userAgent.match(/iPod/i) ||
+    navigator.userAgent.match(/BlackBerry/i) ||
+    navigator.userAgent.match(/Windows Phone/i)
+  ) {
+    return true
+  } else {
+    return false
+  }
+}
+
 const Question = ({currentQuestion, userAnswer, addKey, removeKey, answerQuestion, reset}) => {
   const handleKeypress = (e) => {
     e.preventDefault()
@@ -27,17 +42,20 @@ const Question = ({currentQuestion, userAnswer, addKey, removeKey, answerQuestio
   }
 
   const questionString = "What's the keyboard shortcut for:"
+  const errorText = "Doesn't work on mobile yet!"
   return (
     <div>
       <p>{questionString}</p>
       <TextField
         id='user-answer'
         autoFocus
-        floatingLabelText={currentQuestion.q}
+        floatingLabelText={!isMobile() && currentQuestion.q}
         value={userAnswer}
         onKeyDown={handleKeypress}
         onKeyUp={handleKeyRelease}
-        onBlur={reset} />
+        onBlur={reset}
+        disabled={isMobile()}
+        errorText={isMobile() && errorText} />
     </div>
   )
 }

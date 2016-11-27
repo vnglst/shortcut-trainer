@@ -1,15 +1,10 @@
 import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import App from './App'
+import Routes from './Routes'
 import { createStore, applyMiddleware } from 'redux'
-import { Router, Route, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
-// Database of questions
-import MEMOQ from './data/MEMOQ.json'
-import WORD from './data/WORD.json'
-import logoMemoQ from './images/memoq-logo.png'
-import logoWord from './images/word-logo.png'
+
 // Required to fix warning for Material-UI elements
 // See: https://github.com/callemall/material-ui/issues/4670
 import injectTapEventPlugin from 'react-tap-event-plugin'
@@ -29,10 +24,7 @@ const store = createStore(reducer,
 const Root = () => (
   <MuiThemeProvider>
     <Provider store={store}>
-      <Router history={browserHistory}>
-        <Route path='/' component={() => (<App questions={MEMOQ} logo={logoMemoQ} />)} />
-        <Route path='/word' component={() => (<App questions={WORD} logo={logoWord} />)} />
-      </Router>
+      <Routes />
     </Provider>
   </MuiThemeProvider>
 )

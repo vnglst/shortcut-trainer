@@ -17,9 +17,9 @@ const mapDispatchToProps = ({
   reset
 })
 
-const VisibleInput = connect(
+const VisibleQuestion = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Question)
 
-export default VisibleInput
+export default VisibleQuestion

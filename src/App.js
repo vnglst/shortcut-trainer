@@ -1,10 +1,9 @@
 import React from 'react'
 import './App.css'
+import {Card, CardText} from 'material-ui/Card'
 import Header from './components/header/Header'
-import QuestionCard from './components/question/QuestionCard'
-import VisibleInput from './containers/VisibleInput'
+import VisibleQuestion from './containers/VisibleQuestion'
 import VisibleHistory from './containers/VisibleHistory'
-import StatsCard from './components/stats/StatsCard'
 import VisibleStats from './containers/VisibleStats'
 import Footer from './components/footer/Footer'
 import { connect } from 'react-redux'
@@ -19,15 +18,20 @@ const App = ({dispatch, questions, logo}) => {
       <Header logo={logo} />
       <div id='Main'>
         <div className='App-Questions'>
-          <QuestionCard>
-            <VisibleInput />
-            <VisibleHistory />
-          </QuestionCard>
+          <Card>
+            <CardText>
+              <VisibleQuestion />
+              <VisibleHistory />
+            </CardText>
+          </Card>
         </div>
         <div className='App-Stats'>
-          <StatsCard>
+          <Card>
+            <CardText>
+              <h1>Stats</h1>
+            </CardText>
             <VisibleStats />
-          </StatsCard>
+          </Card>
         </div>
       </div>
       <Footer />

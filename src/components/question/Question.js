@@ -12,17 +12,12 @@ const isModifier = (key) => {
   return modifiers.indexOf(key) !== -1
 }
 
-const isMobile = () => {
-  if (navigator.userAgent.match(/Android/i) ||
-    navigator.userAgent.match(/webOS/i) ||
-    navigator.userAgent.match(/iPhone/i) ||
-    navigator.userAgent.match(/iPad/i) ||
-    navigator.userAgent.match(/iPod/i) ||
-    navigator.userAgent.match(/BlackBerry/i) ||
-    navigator.userAgent.match(/Windows Phone/i)
-  ) {
+// Tests is device has touch support. If so => probably virtual keyboard.
+const hasTouch = () => {
+  try {
+    document.createEvent('TouchEvent')
     return true
-  } else {
+  } catch (e) {
     return false
   }
 }
@@ -49,13 +44,13 @@ const Question = ({currentQuestion, userAnswer, addKey, removeKey, answerQuestio
       <TextField
         id='user-answer'
         autoFocus
-        floatingLabelText={!isMobile() && currentQuestion.q}
+        floatingLabelText={!hasTouch() && currentQuestion.q}
         value={userAnswer}
         onKeyDown={handleKeypress}
         onKeyUp={handleKeyRelease}
         onBlur={reset}
-        disabled={isMobile()}
-        errorText={isMobile() && errorText} />
+        disabled={hasTouch()}
+        errorText={hasTouch() && errorText} />
     </div>
   )
 }

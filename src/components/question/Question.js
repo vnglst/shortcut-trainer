@@ -12,7 +12,7 @@ const isModifier = (key) => {
   return modifiers.indexOf(key) !== -1
 }
 
-const Question = ({dispatch, currentQuestion, userAnswer, addKey, removeKey, answerQuestion, reset}) => {
+const Question = ({currentQuestion, userAnswer, addKey, removeKey, answerQuestion, reset}) => {
   const handleKeypress = (e) => {
     e.preventDefault()
     addKey(e.key)
@@ -20,10 +20,10 @@ const Question = ({dispatch, currentQuestion, userAnswer, addKey, removeKey, ans
 
   const handleKeyRelease = (e) => {
     e.preventDefault()
+    removeKey(e.key)
     if (!isModifier(e.key)) {
       answerQuestion(currentQuestion.id, userAnswer)
     }
-    removeKey(e.key)
   }
 
   const questionString = "What's the keyboard shortcut for:"
